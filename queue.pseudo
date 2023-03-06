@@ -1,0 +1,42 @@
+struct Queue{
+
+    PCB *head, *tail;
+
+    Queue() {
+        head = nullptr;
+        tail = nullptr;
+    }
+
+};
+
+void push(Queue processes, int Process_ID) {
+
+    PCB *pcb = new PCB(Process_ID);
+    pcb->ID = Process_ID;
+
+    if (processes->tail == nullptr) {
+        processes->head = *pcb;
+        processes->tail = *pcb;
+    }
+    else {
+        processes->tail->next = pcb;
+        processes->tail = pcb;
+    }
+
+}
+
+PCB* pop(Queue processes) {
+    
+    if (processes->head == nullptr) {
+        return nullptr;
+    }
+    esle {
+        PCB *head_pcb = head;
+        if (processes->head == processes->tail) {
+            processes->tail = nullptr;
+        }
+        processes->head = processes->head->next;
+        return head_pcb;
+    }
+
+}

@@ -1,0 +1,20 @@
+while (true) {
+
+    wait(in_sem, Process_ID);
+    reader_start_count++;
+    signal(in_sem);
+
+
+    //Critical Section
+
+
+    wait(out_sem, Process_ID);
+    reader_complete_count++;
+
+    if ((reader_start_count == reader_complete_count) && writer_wait) {
+        signal(write_sem);
+    }
+
+    signal(out_sem);
+
+}

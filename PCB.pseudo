@@ -1,0 +1,11 @@
+struct PCB{
+    
+    PCB *next;
+
+    int ID;
+    
+
+    //Other Details
+
+
+};

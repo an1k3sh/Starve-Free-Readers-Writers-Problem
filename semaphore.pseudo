@@ -1,0 +1,34 @@
+struct Semaphore {
+
+    int value = 1;
+    Queue *FIFO = new Queue();
+
+    Semaphore() {
+        value = 1;
+    }
+
+    Semaphore(int s) {
+        value = s;
+    }
+
+}
+
+void wait(Semaphore *S, int Process_ID) {
+
+    S->value--;
+    if (S->value < 0) {
+        push(S->FIFO, Process_ID);
+        block(Process_ID);
+    }
+
+}
+
+void signal(Semaphore *S) {
+
+    S->value++;
+    if (S->value <= 0) {
+        PCB *pcb = pop(FIFO);
+        wakeup(pcb);
+    }
+
+}

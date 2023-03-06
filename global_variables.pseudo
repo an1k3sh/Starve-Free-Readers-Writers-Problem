@@ -1,0 +1,7 @@
+Semaphore *in_sem = new Semaphore(1);
+Semaphore *out_sem = new Semaphore(1);
+Semaphore *write_sem = new Semaphore(1);
+
+int reader_start_count = 0;
+int reader_complete_count = 0;
+bool writer_wait = false;
